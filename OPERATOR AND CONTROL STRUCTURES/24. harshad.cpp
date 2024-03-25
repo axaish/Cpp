@@ -1,33 +1,30 @@
 #include <iostream>
 using namespace std;
 
-int calculateSumOfDigits(int num) {
+int sumOfDigits(int num) {
     int sum = 0;
-    while (num != 0) {
-        int digit = num % 10;
-        sum += digit;
+    while (num > 0) {
+        sum += num % 10;
         num /= 10;
     }
     return sum;
 }
 
-bool isHarshadNumber(int num) {
-    int sum = calculateSumOfDigits(num);
-    return num % sum == 0;
+bool isHarshad(int num) {
+    int sum = sumOfDigits(num);
+    return (num % sum == 0);
 }
 
 int main() {
-    int num;
+    int number;
     cout << "Enter a number: ";
-    cin >> num;
-
-    cout << "Harshad numbers up to " << num << " are: ";
-    for (int i = 1; i <= num; i++) {
-        if (isHarshadNumber(i)) {
-            cout << i << " ";
-        }
+    cin >> number;
+    
+    if (isHarshad(number)) {
+        cout << number << " is a Harshad number." << endl;
+    } else {
+        cout << number << " is not a Harshad number." << endl;
     }
-    cout << endl;
-
+    
     return 0;
 }
